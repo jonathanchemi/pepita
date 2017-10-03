@@ -27,6 +27,12 @@ object pepita {
 		var distancia = location.km() - destino.km()
 		return distancia.abs()
 	}
+	
+	method calcularEnergia(destino) {
+	var energiaNecesaria = self.energia() - (location.km() - destino.km() -10)
+	return energiaNecesaria.abs()
+	
+	}
 }
 
 object sanNicolas {
