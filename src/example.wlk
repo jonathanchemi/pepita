@@ -1,11 +1,10 @@
 
 object pepita {
 	var energia = 100
-	var km = 0
 	var location = sanNicolas
 	
 	method volar(distancia) {
-		energia -= ( 10 + distancia )
+		energia -= self.energiaNecesariaPaVolar(distancia)
 	}
 	
 	method comer(comida) {
@@ -22,17 +21,19 @@ object pepita {
 		//3. cambiar locacion
 		location = lugar
 	}
+	method puedeIrA (lugar) {
+		var distancia = self.calcularDistancia(lugar)
+		return energia >= self.energiaNecesariaPaVolar(distancia)
+	}
 	
 	method calcularDistancia(destino) {
 		var distancia = location.km() - destino.km()
 		return distancia.abs()
 	}
-	
-	method calcularEnergia(destino) {
-	var energiaNecesaria = self.energia() - (location.km() - destino.km() -10)
-	return energiaNecesaria.abs()
-	
+	method energiaNecesariaPaVolar(distancia){
+		return distancia+10
 	}
+	
 }
 
 object sanNicolas {
